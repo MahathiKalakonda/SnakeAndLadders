@@ -39,7 +39,7 @@ class GameController
 
     public void isGameFinished()
     {
-        if(players[(currentPlayer%numberOfPlayers)+1].position==board.boardSize)
+        if(players[currentPlayer%numberOfPlayers].position==board.boardSize)
         {
             System.out.println("Player "+((currentPlayer%numberOfPlayers)+1)+" won the game");
             status=true;
