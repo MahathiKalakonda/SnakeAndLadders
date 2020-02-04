@@ -5,15 +5,17 @@ class GameController
     int currentPlayer=0,numberOfPlayers;
     Dice dice=new Dice();
     Scanner scanner=new Scanner(System.in);
+    Player players[];
+    Board board;
 
     public void startGame()
     {
         System.out.println("Enter number of Players between 2 and 6");
         numberOfPlayers=scanner.nextInt();
-        Player players[]=new Player[numberOfPlayers];
+        players=new Player[numberOfPlayers];
         for(int playerNumber=0;playerNumber<numberOfPlayers;playerNumber++)
             players[playerNumber]=new Player();
-        Board board = new Board(numberOfPlayers);
+        board = new Board(numberOfPlayers);
         takeInputs();
     }
 
@@ -21,9 +23,9 @@ class GameController
     {
         while(status==false)
         {
-            int currentPosition=players[(currentPlayer%numberOfPlayers)+1].position;
-            int diceValue=players[(currentPlayer%numberOfPlayers)+1].rollDice(dice);
-            players[(currentPlayer%numberOfPlayers)+1].position=board.updatePosition(currentPosition,diceValue);
+            int currentPosition=players[currentPlayer%numberOfPlayers].position;
+            int diceValue=players[currentPlayer%numberOfPlayers].rollDice(dice);
+            players[currentPlayer%numberOfPlayers].position=board.updatePosition(currentPosition,diceValue,currentPlayer%numberOfPlayers);
             isGameFinished();
             currentPlayer++;
         }
