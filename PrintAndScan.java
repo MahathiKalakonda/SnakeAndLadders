@@ -6,7 +6,7 @@ class PrintAndScan
     Character playerChoice(int player)
     {
         System.out.println("Player "+player+ " enter 'roll' to roll the dice");
-        Character choice=playerChoice((scanner.nextLine()).charAt(0));
+        Character choice=((scanner.nextLine()).charAt(0));
         return choice;
     }
 
@@ -36,11 +36,23 @@ class PrintAndScan
         }
     }
 
-    public void printSnakesLadders(Snake snakes[],Ladder ladders[])
+    public void printSnakes(Snake snakes[])
     {
         for(int snake=0;snake<snakes.length;snake++)
-            System.out.println("Snake from "+snakes[snake].head+" to "+snakes[snake].tail);
+        {
+            int head=snakes[snake].head;
+            int tail=snakes[snake].tail;
+            System.out.println("Snake from "+head+" to "+tail);
+        }
+    }
+
+    public void printLadders(Ladder ladders[])
+    {
         for(int ladder=0;ladder<ladders.length;ladder++)
-            System.out.println("Ladder from "+ladders[ladder].lowEnd+" to "+ladders[ladder].upEnd);
+        {
+            int lowEnd=ladders[ladder].lowEnd;
+            int upEnd=ladders[ladder].upEnd;
+            System.out.println("Ladder from "+lowEnd+" to "+upEnd);
+        }
     }
 }

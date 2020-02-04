@@ -4,6 +4,7 @@ class Board
     int playersInBoard[];
     Snake snakes[]=new Snake[4];
     Ladder ladders[]=new Ladder[4];
+    PrintAndScan print=new PrintAndScan();
     
     Board()
     {
@@ -28,8 +29,9 @@ class Board
         int resultPosition=currentPosition+diceValue;
         if(resultPosition>boardSize)
             return currentPosition;
-        while(resultPosition!=isInSnakesLadders(resultPosition))
-            resultPosition=isPositionInSnakes(resultPosition);
+        int position=isInSnakesLadders(resultPosition);
+        if(resultPosition!=position)
+            resultPosition=position;
         playersInBoard[currentPlayer]=resultPosition;
         return resultPosition;
     }
@@ -39,25 +41,38 @@ class Board
         int snakeTail=isPositionInSnakes(resultPosition);
         int ladderUpEnd=isPositionInLadders(resultPosition);
         if(snakeTail!=resultPosition)
-            resultPosition=snakeTail;
+            return snakeTail;
         if(ladderUpEnd!=resultPosition)
-            resultPosition=ladderUpEnd;
+        {
+            System.out.println(ladderUpEnd);
+            return ladderUpEnd;
+        }
         return resultPosition;
     }
 
     public int isPositionInSnakes(int resultPosition)
     {
-        for(int snakeNumber=0;snakeNumber<4;snakeNumber++)
-            if(resultPosition==snakes[snakeNumber].head)
-                return snakes[snakeNumber].tail;
+        for(int snake=0;snake<4;snake++)
+        {   
+            if(resultPosition==snakes[snake].head)
+                return snakes[snake].tail;
+        }
         return resultPosition;
     }
 
     public int isPositionInLadders(int resultPosition)
     {
-        for(int ladderNumber=0;ladderNumber<4;ladderNumber++)
-            if(resultPosition==ladders[ladderNumber].lowEnd)
-                return ladders[ladderNumber].upEnd;
+        for(int ladder=0;ladder<4;ladder++)
+        {
+            if(resultPosition==ladders[ladder].lowEnd)
+                return ladders[ladder].upEnd;
+        }
         return resultPosition;
+    }
+
+    void printSnakesLadders()
+    {
+        print.printSnakes(snakes);
+        print.printLadders(ladders);
     }
 }
