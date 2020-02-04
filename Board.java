@@ -33,6 +33,7 @@ class Board
             resultantPosition=isPositionInSnakes(resultantPosition);
             resultantPosition=isPositionInLadders(resultantPosition);
         }
+        playersInBoard[currentPlayer]=resultantPosition;
         return resultantPosition;
     }
 
@@ -60,5 +61,13 @@ class Board
             }
         }
         return resultantPosition;
+    }
+
+    public void displaySnakesLadders()
+    {
+        for(int snakeNumber=0;snakeNumber<4;snakeNumber++)
+            System.out.println("Snake from "+snakes[snakeNumber].head+" to "+snakes[snakeNumber].tail);
+        for(int ladderNumber=0;ladderNumber<4;ladderNumber++)
+            System.out.println("Ladder from "+ladders[ladderNumber].lowerEnd+" to "+ladders[ladderNumber].upperEnd);
     }
 }

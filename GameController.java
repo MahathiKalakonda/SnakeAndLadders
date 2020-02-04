@@ -24,7 +24,7 @@ class GameController
         while(status==false)
         {
             int currentPosition=players[currentPlayer%numberOfPlayers].position;
-            int diceValue=players[currentPlayer%numberOfPlayers].rollDice(dice);
+            int diceValue=players[currentPlayer%numberOfPlayers].rollDice(dice,currentPlayer%numberOfPlayers);
             players[currentPlayer%numberOfPlayers].position=board.updatePosition(currentPosition,diceValue,currentPlayer%numberOfPlayers);
             isGameFinished();
             currentPlayer++;
