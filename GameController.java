@@ -24,9 +24,10 @@ class GameController
     {
         while(status==false)
         {
-            int currentPosition=players[currentPlayer%numberOfPlayers].position;
-            int diceValue=players[currentPlayer%numberOfPlayers].rollDice(dice,currentPlayer%numberOfPlayers);
-            players[currentPlayer%numberOfPlayers].position=board.updatePosition(currentPosition,diceValue,currentPlayer%numberOfPlayers);
+            currentPlayer=currentPlayer%numberOfPlayers;
+            int currentPosition=players[currentPlayer].position;
+            int diceValue=players[currentPlayer].rollDice(dice,currentPlayer);
+            players[currentPlayer].position=board.updatePosition(currentPosition,diceValue,currentPlayer);
             isGameFinished();
             currentPlayer++;
         }
@@ -40,9 +41,9 @@ class GameController
 
     public void isGameFinished()
     {
-        if(players[currentPlayer%numberOfPlayers].position==board.boardSize)
+        if(players[currentPlayer].position==board.boardSize)
         {
-            System.out.println("Player "+((currentPlayer%numberOfPlayers)+1)+" won the game");
+            System.out.println("Player "+((currentPlayer)+1)+" won the game");
             status=true;
         }
         Display();
