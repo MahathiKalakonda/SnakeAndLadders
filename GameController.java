@@ -16,6 +16,7 @@ class GameController
         for(int playerNumber=0;playerNumber<numberOfPlayers;playerNumber++)
             players[playerNumber]=new Player();
         board = new Board(numberOfPlayers);
+        board.displaySnakesLadders();
         takeInputs();
     }
 
