@@ -43,10 +43,7 @@ class Board
         if(snakeTail!=resultPosition)
             return snakeTail;
         if(ladderUpEnd!=resultPosition)
-        {
-            System.out.println(ladderUpEnd);
             return ladderUpEnd;
-        }
         return resultPosition;
     }
 
