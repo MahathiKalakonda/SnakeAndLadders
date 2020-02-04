@@ -1,16 +1,16 @@
 class Ladder
 {
-    int lowerEnd,upperEnd;
-    
+    int lowEnd,upEnd;
+
     Ladder()
     {
-        this.lowerEnd=0;
-        this.upperEnd=0;
+        this.lowEnd=0;
+        this.upEnd=0;
     }
 
     Ladder(int lowerEnd,int upperEnd)
     {
-        this.lowerEnd=lowerEnd;
-        this.upperEnd=upperEnd;
+        this.lowEnd=lowerEnd;
+        this.upEnd=upperEnd;
     }
 }

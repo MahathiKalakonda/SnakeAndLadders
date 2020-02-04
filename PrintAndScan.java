@@ -35,4 +35,12 @@ class PrintAndScan
             System.out.println("Position of Player "+player+" is "+position);
         }
     }
+
+    public void printSnakesLadders(Snake snakes[],Ladder ladders[])
+    {
+        for(int snake=0;snake<snakes.length;snake++)
+            System.out.println("Snake from "+snakes[snake].head+" to "+snakes[snake].tail);
+        for(int ladder=0;ladder<ladders.length;ladder++)
+            System.out.println("Ladder from "+ladders[ladder].lowEnd+" to "+ladders[ladder].upEnd);
+    }
 }

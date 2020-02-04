@@ -54,20 +54,12 @@ class Board
     {
         for(int ladderNumber=0;ladderNumber<4;ladderNumber++)
         {
-            if(resultantPosition==ladders[ladderNumber].lowerEnd)
+            if(resultantPosition==ladders[ladderNumber].lowEnd)
             {
                 System.out.println("Climbed the ladder");
-                return ladders[ladderNumber].upperEnd;
+                return ladders[ladderNumber].upEnd;
             }
         }
         return resultantPosition;
-    }
-
-    public void displaySnakesLadders()
-    {
-        for(int snakeNumber=0;snakeNumber<4;snakeNumber++)
-            System.out.println("Snake from "+snakes[snakeNumber].head+" to "+snakes[snakeNumber].tail);
-        for(int ladderNumber=0;ladderNumber<4;ladderNumber++)
-            System.out.println("Ladder from "+ladders[ladderNumber].lowerEnd+" to "+ladders[ladderNumber].upperEnd);
     }
 }
