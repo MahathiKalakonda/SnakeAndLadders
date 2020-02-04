@@ -11,6 +11,8 @@ class GameController
         System.out.println("Enter number of Players between 2 and 6");
         numberOfPlayers=scanner.nextInt();
         Player players[]=new Player[numberOfPlayers];
+        for(int playerNumber=0;playerNumber<numberOfPlayers;playerNumber++)
+            players[playerNumber]=new Player();
         Board board = new Board(numberOfPlayers);
         takeInputs();
     }
@@ -19,7 +21,7 @@ class GameController
     {
         while(status==false)
         {
-            int currentPosition=players[(currentPlayer%numberOfPlayers)+1].position
+            int currentPosition=players[(currentPlayer%numberOfPlayers)+1].position;
             int diceValue=players[(currentPlayer%numberOfPlayers)+1].rollDice(dice);
             players[(currentPlayer%numberOfPlayers)+1].position=board.updatePosition(currentPosition,diceValue);
             isGameFinished();
@@ -29,7 +31,7 @@ class GameController
 
     public void Display()
     {
-        for(playerNumber=0;playerNumber<numberOfPlayers;playerNumber++)
+        for(int playerNumber=0;playerNumber<numberOfPlayers;playerNumber++)
             System.out.println("Position of Player "+  (playerNumber+1)+" is "+players[playerNumber].position);
     }
 
