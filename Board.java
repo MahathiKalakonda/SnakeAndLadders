@@ -25,41 +25,39 @@ class Board
 
     public int updatePosition(int currentPosition,int diceValue,int currentPlayer)
     {
-        int resultantPosition=currentPosition+diceValue;
-        if(resultantPosition>boardSize)
+        int resultPosition=currentPosition+diceValue;
+        if(resultPosition>boardSize)
             return currentPosition;
-        while(resultantPosition!=isPositionInSnakes(resultantPosition) || resultantPosition!=isPositionInLadders(resultantPosition))
-        {
-            resultantPosition=isPositionInSnakes(resultantPosition);
-            resultantPosition=isPositionInLadders(resultantPosition);
-        }
-        playersInBoard[currentPlayer]=resultantPosition;
-        return resultantPosition;
+        while(resultPosition!=isInSnakesLadders(resultPosition))
+            resultPosition=isPositionInSnakes(resultPosition);
+        playersInBoard[currentPlayer]=resultPosition;
+        return resultPosition;
     }
 
-    public int isPositionInSnakes(int resultantPosition)
+    public int isInSnakesLadders(int resultPosition)
+    {
+        int snakeTail=isPositionInSnakes(resultPosition);
+        int ladderUpEnd=isPositionInLadders(resultPosition);
+        if(snakeTail!=resultPosition)
+            resultPosition=snakeTail;
+        if(ladderUpEnd!=resultPosition)
+            resultPosition=ladderUpEnd;
+        return resultPosition;
+    }
+
+    public int isPositionInSnakes(int resultPosition)
     {
         for(int snakeNumber=0;snakeNumber<4;snakeNumber++)
-        {
-            if(resultantPosition==snakes[snakeNumber].head)
-            {
-                System.out.println("Swallowed by snake");
+            if(resultPosition==snakes[snakeNumber].head)
                 return snakes[snakeNumber].tail;
-            }
-        }
-        return resultantPosition;
+        return resultPosition;
     }
 
-    public int isPositionInLadders(int resultantPosition)
+    public int isPositionInLadders(int resultPosition)
     {
         for(int ladderNumber=0;ladderNumber<4;ladderNumber++)
-        {
-            if(resultantPosition==ladders[ladderNumber].lowEnd)
-            {
-                System.out.println("Climbed the ladder");
+            if(resultPosition==ladders[ladderNumber].lowEnd)
                 return ladders[ladderNumber].upEnd;
-            }
-        }
-        return resultantPosition;
+        return resultPosition;
     }
 }
