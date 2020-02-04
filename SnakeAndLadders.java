@@ -2,7 +2,7 @@ public class SnakeAndLadders
 {
     public static void main(String args[])
     {
-        GameController gameController=new gameController();
+        GameController gameController=new GameController();
         gameController.startGame();
     }
 }
