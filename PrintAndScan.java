@@ -1,5 +1,5 @@
 import java.util.Scanner;
-class PrintAndScan
+class PrinterAndScanner
 {
     Scanner scanner=new Scanner(System.in);
 
@@ -20,7 +20,7 @@ class PrintAndScan
         System.out.println("Player "+player+" won the game");
     }
 
-    public int getPlayersNumber()
+    public int getNumberOfPlayers()
     {
         System.out.println("Enter number of Players between 2 and 6");
         int numberOfPlayers=scanner.nextInt();

@@ -4,7 +4,7 @@ class Board
     int playersInBoard[];
     Snake snakes[]=new Snake[4];
     Ladder ladders[]=new Ladder[4];
-    PrintAndScan print=new PrintAndScan();
+    PrinterAndScanner print=new PrinterAndScanner();
     
     Board()
     {
@@ -24,22 +24,22 @@ class Board
         playersInBoard=new int[numberOfPlayers];
     }
 
-    public int updatePosition(int currentPosition,int diceValue,int currentPlayer)
+    public int updatePosition(int currentPlayer, int position, int diceValue)
     {
-        int resultPosition=currentPosition+diceValue;
+        int resultPosition=position+diceValue;
         if(resultPosition>boardSize)
-            return currentPosition;
-        int position=isInSnakesLadders(resultPosition);
-        if(resultPosition!=position)
-            resultPosition=position;
+            return position;
+        int currentPosition=positionInSnakesLadders(resultPosition);
+        if(resultPosition!=currentPosition)
+            resultPosition=currentPosition;
         playersInBoard[currentPlayer]=resultPosition;
         return resultPosition;
     }
 
-    public int isInSnakesLadders(int resultPosition)
+    public int positionInSnakesLadders(int resultPosition)
     {
-        int snakeTail=isPositionInSnakes(resultPosition);
-        int ladderUpEnd=isPositionInLadders(resultPosition);
+        int snakeTail=PositionInSnakes(resultPosition);
+        int ladderUpEnd=PositionInLadders(resultPosition);
         if(snakeTail!=resultPosition)
             return snakeTail;
         if(ladderUpEnd!=resultPosition)
@@ -47,7 +47,7 @@ class Board
         return resultPosition;
     }
 
-    public int isPositionInSnakes(int resultPosition)
+    public int PositionInSnakes(int resultPosition)
     {
         for(int snake=0;snake<4;snake++)
         {   
@@ -57,7 +57,7 @@ class Board
         return resultPosition;
     }
 
-    public int isPositionInLadders(int resultPosition)
+    public int PositionInLadders(int resultPosition)
     {
         for(int ladder=0;ladder<4;ladder++)
         {

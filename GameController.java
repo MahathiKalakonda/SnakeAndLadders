@@ -1,45 +1,53 @@
-class GameController
+class Game
 {
-    boolean status=false;
-    int currentPlayer=0,numberOfPlayers;
+    int currentPlayerIndex=0, numberOfPlayers;
     Dice dice=new Dice();
     Player players[];
     Board board;
-    PrintAndScan printAndGet=new PrintAndScan();
+    boolean stopGame = false;
+    PrinterAndScanner printerAndScanner=new PrinterAndScanner();
+
+    void createPlayers() 
+    {
+        numberOfPlayers=printerAndScanner.getNumberOfPlayers();
+        players=new Player[numberOfPlayers];
+        for(int playerIndex=0; playerIndex<numberOfPlayers ;playerIndex++)
+            players[playerIndex]=new Player();
+    }
 
     public void startGame()
     {
-        numberOfPlayers=printAndGet.getPlayersNumber();
-        players=new Player[numberOfPlayers];
-        for(int playerNumber=0;playerNumber<numberOfPlayers;playerNumber++)
-            players[playerNumber]=new Player();
+        createPlayers();
         board = new Board(numberOfPlayers);
         board.printSnakesLadders();
-        takeInputs();
+        play();
     }
 
-    public void takeInputs()
+    public void playTurn() {
+        currentPlayerIndex = currentPlayerIndex % numberOfPlayers;
+        Player currentPlayer = players[currentPlayerIndex];
+        int position = currentPlayer.position;
+        int diceValue = currentPlayer.rollDice(dice, currentPlayerIndex);
+        position = board.updatePosition(currentPlayerIndex, position, diceValue);
+        currentPlayer.position = position;
+    }
+
+    public void play()
     {
-        while(status==false)
+        while(!stopGame)
         {
-            currentPlayer=currentPlayer%numberOfPlayers;
-            int Position=players[currentPlayer].position;
-            int diceValue=players[currentPlayer].rollDice(dice,currentPlayer);
-            Position=board.updatePosition(Position,diceValue,currentPlayer);
-            players[currentPlayer].position=Position;
-            isGameFinished();
+            playTurn();
+            if(isGameFinished())
+                printerAndScanner.printWinner(currentPlayerIndex+1);
+            printerAndScanner.displayPositions(players);
+            currentPlayerIndex++;
         }
     }
 
 
-    public void isGameFinished()
+    public boolean isGameFinished()
     {
-        if(players[currentPlayer].position==board.boardSize)
-        {
-            printAndGet.printWinner(currentPlayer+1);
-            status=true;
-        }
-        printAndGet.displayPositions(players);
-        currentPlayer++;
+        stopGame=players[currentPlayerIndex].position==board.boardSize;
+        return stopGame;
     }
 }

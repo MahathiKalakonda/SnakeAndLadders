@@ -2,14 +2,14 @@ class Player
 {
     int position=0,diceValue=0;
     Character choice;
-    PrintAndScan printAndGet=new PrintAndScan();
+    PrinterAndScanner printerAndScanner=new PrinterAndScanner();
     
     public int rollDice(Dice dice,int currentPlayer)
     {
-        choice=printAndGet.playerChoice(currentPlayer+1);
+        choice=printerAndScanner.playerChoice(currentPlayer+1);
         if(choice!=null)
             diceValue=dice.generateMove();
-        printAndGet.printDice(diceValue);
+        printerAndScanner.printDice(diceValue);
         return diceValue;
     }
 }
