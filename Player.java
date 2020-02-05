@@ -1,14 +1,14 @@
 class Player
 {
-    int position=0;
-    PrinterAndScanner printerAndScanner=new PrinterAndScanner();
+    int position = 0;
+    PrinterAndScanner printerAndScanner = new PrinterAndScanner();
     
-    public int rollDice(Dice dice,int currentPlayer)
+    public int rollDice(Dice dice, int currentPlayer)
     {
-        int diceValue=0;
-        Character choice=printerAndScanner.playerChoice(currentPlayer+1);
-        if(choice!=null)
-            diceValue=dice.generateMove();
+        int diceValue = 0, currentPlayerId = currentPlayer + 1 ;
+        String choice = printerAndScanner.playerChoice(currentPlayerId);
+        if(choice == "roll")
+            diceValue = dice.generateMove();
         printerAndScanner.printDice(diceValue);
         return diceValue;
     }
