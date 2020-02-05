@@ -19,9 +19,10 @@ class Game
     void createPlayers() 
     {
         numberOfPlayers = printerAndScanner.getNumberOfPlayers();
-        players = new Player[numberOfPlayers];
+        Player temperoryPlayers[]=new Player[numberOfPlayers];
         for(int playerIndex = 0; playerIndex<numberOfPlayers; playerIndex++)
-            players[playerIndex] = new Player();
+            temperoryPlayers[playerIndex] = new Player();
+        players=temperoryPlayers;
     }
 
     public void play()
@@ -39,6 +40,7 @@ class Game
     public void playTurn() 
     {
         currentPlayerIndex = currentPlayerIndex % numberOfPlayers;
+        currentPlayerId=currentPlayerIndex+1;
         Player currentPlayer = players[currentPlayerIndex];
         int position = currentPlayer.position;
         int diceValue = currentPlayer.rollDice(dice, currentPlayerIndex);
@@ -59,7 +61,6 @@ class Game
 
     void changePlayerTurn()
     {
-        currentPlayerId++;
         currentPlayerIndex++;
     }
 }
