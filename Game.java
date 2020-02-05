@@ -1,6 +1,7 @@
 class Game
 {
-    int currentPlayerIndex=0, numberOfPlayers,currentPlayerId=currentPlayerIndex+1;
+    int currentPlayerIndex=0, numberOfPlayers;
+    int currentPlayerId=currentPlayerIndex+1;
     Dice dice=new Dice();
     Board board;
     boolean stopGame = false;
