@@ -23,7 +23,8 @@ class Game
         play();
     }
 
-    public void playTurn() {
+    public void playTurn() 
+    {
         currentPlayerIndex = currentPlayerIndex % numberOfPlayers;
         Player currentPlayer = players[currentPlayerIndex];
         int position = currentPlayer.position;
@@ -43,7 +44,6 @@ class Game
             currentPlayerIndex++;
         }
     }
-
 
     public boolean isGameFinished()
     {
