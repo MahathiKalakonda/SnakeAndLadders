@@ -13,4 +13,14 @@ class Snake
         this.head = head;
         this.tail = tail;
     }
+
+    int getHead()
+    {
+        return head;
+    }
+
+    int getTail()
+    {
+        return tail;
+    }
 }

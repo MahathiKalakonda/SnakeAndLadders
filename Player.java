@@ -6,7 +6,7 @@ class Player
     public int rollDice(Dice dice, int currentPlayer)
     {
         int diceValue = 0, currentPlayerId = currentPlayer + 1 ;
-        String choice = printerAndScanner.playerChoice(currentPlayerId);
+        String choice = printerAndScanner.getPlayerChoice(currentPlayerId);
         if(choice.equals("roll"))
             diceValue = dice.generateMove();
         printerAndScanner.printDice(diceValue);

@@ -61,8 +61,8 @@ class Board
     {
         for(int snake=0; snake<4; snake++)
         {   
-            if(resultPosition == snakes[snake].head)
-                return snakes[snake].tail;
+            if(resultPosition == snakes[snake].getHead())
+                return snakes[snake].getTail();
         }
         return resultPosition;
     }
@@ -71,8 +71,8 @@ class Board
     {
         for(int ladder=0; ladder<4; ladder++)
         {
-            if(resultPosition == ladders[ladder].lowEnd)
-                return ladders[ladder].upEnd;
+            if(resultPosition == ladders[ladder].getLowEnd())
+                return ladders[ladder].getUpEnd();
         }
         return resultPosition;
     }

@@ -13,4 +13,14 @@ class Ladder
         this.lowEnd = lowerEnd;
         this.upEnd = upperEnd;
     }
+
+    int getUpEnd()
+    {
+        return upEnd;
+    }
+
+    int getLowEnd()
+    {
+        return lowEnd;
+    }
 }
