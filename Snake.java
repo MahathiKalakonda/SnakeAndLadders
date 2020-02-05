@@ -4,13 +4,13 @@ class Snake
 
     Snake()
     {
-        this.head=0;
-        this.tail=0;
+        this.head = 0;
+        this.tail = 0;
     }
 
     Snake(int head,int tail)
     {
-        this.head=head;
-        this.tail=tail;
+        this.head = head;
+        this.tail = tail;
     }
 }

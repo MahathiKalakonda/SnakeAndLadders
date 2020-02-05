@@ -34,7 +34,7 @@ class Board
         ladders[3] = new Ladder(20,29);
     }
 
-    public int updatePosition(int currentPlayer, int position, int diceValue)
+    public int updatePosition(int currentPlayerIndex, int position, int diceValue)
     {
         int resultPosition = position+diceValue;
         if(resultPosition > boardSize)
@@ -42,7 +42,7 @@ class Board
         int currentPosition = positionInSnakesLadders(resultPosition);
         if(resultPosition != currentPosition)
             resultPosition = currentPosition;
-        playersInBoard[currentPlayer] = resultPosition;
+        playersInBoard[currentPlayerIndex] = resultPosition;
         return resultPosition;
     }
 

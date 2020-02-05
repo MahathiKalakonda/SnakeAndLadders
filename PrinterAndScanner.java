@@ -3,10 +3,17 @@ class PrinterAndScanner
 {
     Scanner scanner=new Scanner(System.in);
 
-    Character playerChoice(int player)
+    public int getNumberOfPlayers()
+    {
+        System.out.println("Enter number of Players between 2 and 6");
+        int numberOfPlayers=scanner.nextInt();
+        return numberOfPlayers;
+    }
+
+    String playerChoice(int player)
     {
         System.out.println("Player "+player+ " enter 'roll' to roll the dice");
-        Character choice=((scanner.nextLine()).charAt(0));
+        String choice=scanner.nextLine();
         return choice;
     }
 
@@ -18,13 +25,6 @@ class PrinterAndScanner
     public void printWinner(int player)
     {
         System.out.println("Player "+player+" won the game");
-    }
-
-    public int getNumberOfPlayers()
-    {
-        System.out.println("Enter number of Players between 2 and 6");
-        int numberOfPlayers=scanner.nextInt();
-        return numberOfPlayers;
     }
 
     public void displayPositions(Player players[])
