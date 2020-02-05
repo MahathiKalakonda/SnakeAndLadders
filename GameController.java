@@ -2,9 +2,9 @@ class Game
 {
     int currentPlayerIndex=0, numberOfPlayers;
     Dice dice=new Dice();
-    Player players[];
     Board board;
     boolean stopGame = false;
+    Player players[];
     PrinterAndScanner printerAndScanner=new PrinterAndScanner();
 
     void createPlayers() 
@@ -47,7 +47,7 @@ class Game
 
     public boolean isGameFinished()
     {
-        stopGame=players[currentPlayerIndex].position==board.boardSize;
+        stopGame = players[currentPlayerIndex].position==board.boardSize;
         return stopGame;
     }
 }
