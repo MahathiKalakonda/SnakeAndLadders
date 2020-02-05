@@ -4,7 +4,7 @@ class Board
     int playersInBoard[];
     Snake snakes[] = new Snake[4];
     Ladder ladders[] = new Ladder[4];
-    PrinterAndScanner print = new PrinterAndScanner();
+    PrinterAndScanner printer = new PrinterAndScanner();
     
     Board()
     {
@@ -79,7 +79,7 @@ class Board
 
     void printSnakesLadders()
     {
-        print.printSnakes(snakes);
-        print.printLadders(ladders);
+        printer.printSnakes(snakes);
+        printer.printLadders(ladders);
     }
 }
