@@ -1,8 +1,8 @@
 class Game
 {
-    int currentPlayerIndex=0, numberOfPlayers;
-    int currentPlayerId=currentPlayerIndex+1;
-    Dice dice=new Dice();
+    int currentPlayerIndex = 0, numberOfPlayers;
+    int currentPlayerId = currentPlayerIndex+1;
+    Dice dice = new Dice();
     Board board;
     boolean stopGame = false;
     Player players[];
@@ -19,7 +19,7 @@ class Game
     void createPlayers() 
     {
         numberOfPlayers = printerAndScanner.getNumberOfPlayers();
-        Player temperoryPlayers[]=new Player[numberOfPlayers];
+        Player temperoryPlayers[] = new Player[numberOfPlayers];
         for(int playerIndex = 0; playerIndex<numberOfPlayers; playerIndex++)
             temperoryPlayers[playerIndex] = new Player();
         players=temperoryPlayers;
@@ -40,7 +40,7 @@ class Game
     public void playTurn() 
     {
         currentPlayerIndex = currentPlayerIndex % numberOfPlayers;
-        currentPlayerId=currentPlayerIndex+1;
+        currentPlayerId = currentPlayerIndex+1;
         Player currentPlayer = players[currentPlayerIndex];
         int position = currentPlayer.position;
         int diceValue = currentPlayer.rollDice(dice, currentPlayerIndex);
